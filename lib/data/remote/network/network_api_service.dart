@@ -14,7 +14,6 @@ class NetworkApiService extends BaseApiService {
       final response = await dio.get(url,
           queryParameters: params, options: Options(headers: header));
       //Raises error if there is a bad status code
-      //Raises error if there is a bad status code
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');

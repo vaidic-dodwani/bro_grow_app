@@ -72,7 +72,7 @@ class _Toast extends StatelessWidget {
           Center(
             child: Text(
               msg,
-              style: AppTypography.primaryStyle.copyWith(
+              style: AppTypography.f14w500.copyWith(
                   color: type == AppToastsType.error
                       ? AppColors.errorColor
                       : AppColors.successColor,

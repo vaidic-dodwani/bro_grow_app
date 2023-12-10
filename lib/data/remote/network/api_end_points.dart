@@ -1,3 +1,3 @@
 class ApiLinks {
-  static const String tempUrl = "api/sample/";
+  static const String getCityStateUrl = "https://api.postalpincode.in/pincode/";
 }

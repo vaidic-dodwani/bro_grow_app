@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "465089517900",
+    "project_id": "brocode-c2130",
+    "storage_bucket": "brocode-c2130.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465089517900:android:e40612d8cc10ea9714d7e9",
+        "android_client_info": {
+          "package_name": "com.example.bro_grow_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3ulq0esUC2o8gDgju0woZpgICV0yvhuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
