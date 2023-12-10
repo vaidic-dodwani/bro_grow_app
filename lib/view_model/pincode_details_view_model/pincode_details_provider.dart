@@ -62,9 +62,7 @@ class PincodeProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> saveDetails(
-    BuildContext context,
-  ) async {
+  Future<void> saveDetails(BuildContext context, {bool ifPop = false}) async {
     if (city.isEmpty || state.isEmpty || pincode.isEmpty || category.isEmpty) {
       AppToasts.showErrorToast("Fill All Fields");
     } else {
@@ -72,7 +70,11 @@ class PincodeProvider extends ChangeNotifier {
       await LocalStorageService.setString(LocalStorageKeys.state, state);
       await LocalStorageService.setString(LocalStorageKeys.pincode, pincode);
       await LocalStorageService.setString(LocalStorageKeys.category, category);
-      context.goNamed(AppRouteNames.homeScreenRoute);
+      if (ifPop) {
+        context.pop();
+      } else {
+        context.goNamed(AppRouteNames.homeScreenRoute);
+      }
     }
   }
 

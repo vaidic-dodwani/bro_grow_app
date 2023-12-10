@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 import '../../../utils/constants/app_constants.dart';
 
 class PincodeDetailScreen extends StatefulWidget {
-  const PincodeDetailScreen({super.key});
+  const PincodeDetailScreen({super.key, this.ifPop = false});
+
+  final bool ifPop;
 
   @override
   State<PincodeDetailScreen> createState() => _PincodeDetailScreenState();
@@ -19,7 +21,12 @@ class _PincodeDetailScreenState extends State<PincodeDetailScreen> {
 
   @override
   void initState() {
-    pinCodeController = TextEditingController();
+    final pinProv = Provider.of<PincodeProvider>(context, listen: false);
+
+    pinCodeController = TextEditingController(
+      text: pinProv.pincode,
+    );
+
     super.initState();
   }
 
@@ -62,6 +69,7 @@ class _PincodeDetailScreenState extends State<PincodeDetailScreen> {
                     textAlign: TextAlign.left, style: AppTypography.f14w400),
                 const SizedBox(height: 10),
                 DropdownMenu(
+                  initialSelection: pincodeProv.category,
                   hintText: "Category",
                   width: MediaQuery.sizeOf(context).width - 32,
                   textStyle: AppTypography.f16w500,
@@ -114,7 +122,7 @@ class _PincodeDetailScreenState extends State<PincodeDetailScreen> {
                           pincodeProv.category.isEmpty) {
                         AppToasts.showErrorToast("Fill All Fields");
                       } else {
-                        pincodeProv.saveDetails(context);
+                        pincodeProv.saveDetails(context, ifPop: widget.ifPop);
                       }
                     })
               ],

@@ -55,6 +55,11 @@ class AppTypography {
     fontWeight: FontWeight.w500,
   );
 
+  static const TextStyle f20w700 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  );
+
   static const TextStyle f22w400 = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w400,
@@ -108,5 +113,25 @@ class AppTypography {
   static const TextStyle f30w500 = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle f30w700 = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle f32w400 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle f32w500 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle f32w700 = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
   );
 }
