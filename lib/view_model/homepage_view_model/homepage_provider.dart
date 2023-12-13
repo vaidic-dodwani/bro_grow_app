@@ -10,6 +10,15 @@ import 'package:provider/provider.dart';
 
 class HomepageProvider extends ChangeNotifier {
 //
+  int _pageIndex = 0;
+  int get pageIndex => _pageIndex;
+  set pageIndex(int _) {
+    _pageIndex = _;
+    notifyListeners();
+  }
+//
+
+//
   ApiResponse _apiResponse = ApiResponse.initial();
   ApiResponse get apiResponse => _apiResponse;
   set apiResponse(ApiResponse _) {

@@ -5,6 +5,11 @@ class AppTypography {
     fontSize: 10,
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle f10w500 = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle f12w400 = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,

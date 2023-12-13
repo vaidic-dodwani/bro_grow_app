@@ -42,9 +42,9 @@ class GoRouterConfig {
         name: AppRouteNames.pincodeRoute,
         path: '/pincode',
         builder: (context, state) {
-          final extra = state.extra as Map<String, dynamic>;
+          final extra = (state.extra ?? {}) as Map<dynamic, dynamic>;
           return PincodeDetailScreen(
-            ifPop: extra['ifPop'],
+            ifPop: extra['ifPop'] ?? false,
           );
         },
       ),

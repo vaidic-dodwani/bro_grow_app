@@ -3,6 +3,7 @@ import 'package:bro_grow_app/data/remote/network/network_api_service.dart';
 
 abstract class _HomePageAbstract {
   Future<dynamic> getData(dynamic jsonBody);
+  Future<dynamic> getReview(dynamic jsonBody);
 }
 
 class HomePageRepository extends _HomePageAbstract {
@@ -12,6 +13,19 @@ class HomePageRepository extends _HomePageAbstract {
     try {
       final resp = await _apiService.postResponse(
         ApiLinks.getBusinessData,
+        jsonBody,
+      );
+      return resp;
+    } on Exception catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<dynamic> getReview(dynamic jsonBody) async {
+    try {
+      final resp = await _apiService.postResponse(
+        ApiLinks.getReview,
         jsonBody,
       );
       return resp;

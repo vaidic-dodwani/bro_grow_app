@@ -134,7 +134,7 @@ class Competitor {
 class EaseOfBusiness {
   final String? name;
   final double? rating;
-  final List<String>? betterAreas;
+  final List<BetterArea>? betterAreas;
   final String? remark;
   final List<String>? moreProsperousAreas;
 
@@ -149,7 +149,7 @@ class EaseOfBusiness {
   EaseOfBusiness copyWith({
     String? name,
     double? rating,
-    List<String>? betterAreas,
+    List<BetterArea>? betterAreas,
     String? remark,
     List<String>? moreProsperousAreas,
   }) =>
@@ -166,7 +166,8 @@ class EaseOfBusiness {
         rating: json["rating"]?.toDouble(),
         betterAreas: json["betterAreas"] == null
             ? []
-            : List<String>.from(json["betterAreas"]!.map((x) => x)),
+            : List<BetterArea>.from(
+                json["betterAreas"]!.map((x) => BetterArea.fromJson(x))),
         remark: json["remark"],
         moreProsperousAreas: json["moreProsperousAreas"] == null
             ? []
@@ -178,11 +179,40 @@ class EaseOfBusiness {
         "rating": rating,
         "betterAreas": betterAreas == null
             ? []
-            : List<dynamic>.from(betterAreas!.map((x) => x)),
+            : List<dynamic>.from(betterAreas!.map((x) => x.toJson())),
         "remark": remark,
         "moreProsperousAreas": moreProsperousAreas == null
             ? []
             : List<dynamic>.from(moreProsperousAreas!.map((x) => x)),
+      };
+}
+
+class BetterArea {
+  final String? stateName;
+  final double? perCapita;
+
+  BetterArea({
+    this.stateName,
+    this.perCapita,
+  });
+
+  BetterArea copyWith({
+    String? stateName,
+    double? perCapita,
+  }) =>
+      BetterArea(
+        stateName: stateName ?? this.stateName,
+        perCapita: perCapita ?? this.perCapita,
+      );
+
+  factory BetterArea.fromJson(Map<String, dynamic> json) => BetterArea(
+        stateName: json["stateName"],
+        perCapita: json["perCapita"]?.toDouble(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "stateName": stateName,
+        "perCapita": perCapita,
       };
 }
 
@@ -207,7 +237,7 @@ class OppurtunityRating {
   factory OppurtunityRating.fromJson(Map<String, dynamic> json) =>
       OppurtunityRating(
         name: json["name"],
-        rating: json["rating"]?.toDouble(),
+        rating: json["rating"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {

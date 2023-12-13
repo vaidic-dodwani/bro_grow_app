@@ -95,10 +95,12 @@ class _CompetitorCardState extends State<CompetitorCard> {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Text(
-                      homeProv.barChartData[index].category,
-                      style: AppTypography.f18w400,
-                      overflow: TextOverflow.ellipsis,
+                    Expanded(
+                      child: Text(
+                        homeProv.barChartData[index].category,
+                        style: AppTypography.f18w400,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ],
                 );
