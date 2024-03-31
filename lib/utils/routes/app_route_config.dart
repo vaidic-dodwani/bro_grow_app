@@ -1,6 +1,9 @@
 import 'package:bro_grow_app/utils/routes/app_route_names.dart';
 import 'package:bro_grow_app/utils/routes/navigator_key.dart';
 import 'package:bro_grow_app/view/screens/homescreen/homescreen.dart';
+import 'package:bro_grow_app/view/screens/homescreen/widgets/account_aggregator.dart';
+import 'package:bro_grow_app/view/screens/homescreen/widgets/holder_screen.dart';
+import 'package:bro_grow_app/view/screens/homescreen/widgets/transaction.dart';
 import 'package:bro_grow_app/view/screens/login_screen/login_screen.dart';
 import 'package:bro_grow_app/view/screens/otp_screen/otp_screen.dart';
 import 'package:bro_grow_app/view/screens/pincode_detail/pincode_detail_screen.dart';
@@ -16,7 +19,8 @@ class GoRouterConfig {
         name: AppRouteNames.splashScreenRoute,
         path: '/',
         builder: (context, state) {
-          return const SplashScreen();
+          // return const SplashScreen();
+          return const AccountAggregator();
         },
       ),
       GoRoute(
@@ -53,6 +57,24 @@ class GoRouterConfig {
         path: '/home',
         builder: (context, state) {
           return const HomeScreen();
+        },
+      ),
+      GoRoute(
+        name: AppRouteNames.holderScreenRoute,
+        path: '/holder_screen',
+        builder: (context, state) {
+          final extra = (state.extra ?? {}) as Map<dynamic, dynamic>;
+
+          return HolderScreen(holders: extra['holders'] ?? []);
+        },
+      ),
+      GoRoute(
+        name: AppRouteNames.transactionScreem,
+        path: '/transaction_screen',
+        builder: (context, state) {
+          final extra = (state.extra ?? {}) as Map<dynamic, dynamic>;
+
+          return TransactionScreen(account: extra['account']);
         },
       ),
     ],
