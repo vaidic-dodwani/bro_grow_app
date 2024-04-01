@@ -1,3 +1,4 @@
+import 'package:bro_grow_app/view/screens/homescreen/widgets/account_aggregator.dart';
 import 'package:bro_grow_app/view/screens/homescreen/widgets/competitor_analysis.dart';
 import 'package:bro_grow_app/view/screens/homescreen/widgets/review_section.dart';
 import 'package:bro_grow_app/view/screens/homescreen/widgets/sector_analysis.dart';
@@ -17,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const CompetitorAnalysis(),
     const SectorAnalysis(),
     const ReviewSection(),
+    const AccountAggregator()
   ];
 
   @override
@@ -33,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<HomepageProvider>(
       builder: (context, homeProv, child) => Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          enableFeedback: true,
           currentIndex: homeProv.pageIndex,
           onTap: (value) {
             homeProv.pageIndex = value;
@@ -43,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.location_on), label: "Sector"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.reviews), label: "Reviews"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_balance_wallet), label: "Account"),
           ],
         ),
         body: SafeArea(

@@ -19,8 +19,8 @@ class GoRouterConfig {
         name: AppRouteNames.splashScreenRoute,
         path: '/',
         builder: (context, state) {
-          // return const SplashScreen();
-          return const AccountAggregator();
+          return const SplashScreen();
+          // return const AccountAggregator();
         },
       ),
       GoRoute(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bro_grow_app/utils/constants/app_colors.dart';
 import 'package:bro_grow_app/utils/constants/app_typography.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +65,28 @@ class TransactionScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+              const SizedBox(height: 15),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                    color: Color(0xFF08ADFF),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Row(
+                  children: [
+                    Text(
+                      'CIBIL SCORE',
+                      style:
+                          AppTypography.f18w500.copyWith(color: Colors.white),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '${Random().nextInt(220) + 580}',
+                      style:
+                          AppTypography.f18w500.copyWith(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 15),
               const Text(
                 'Transactions',

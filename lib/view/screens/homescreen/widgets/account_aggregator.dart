@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:math' hide log;
+
 import 'package:bro_grow_app/utils/routes/app_route_names.dart';
 import 'package:bro_grow_app/view/screens/homescreen/model/accounts.dart';
 import 'package:bro_grow_app/view/screens/homescreen/utils/transaction_data.dart';
@@ -22,6 +25,7 @@ class _AccountAggregatorState extends State<AccountAggregator> {
     super.initState();
   }
 
+  int numberOfAccountsShown = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,22 +42,30 @@ class _AccountAggregatorState extends State<AccountAggregator> {
                 style: AppTypography.f20w500,
               ),
               const SizedBox(height: 30),
-              Expanded(
-                  child: ListView.separated(
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-                itemCount: _account.accounts!.length,
-                itemBuilder: (context, index) {
-                  return AccountBox(account: _account.accounts![index]);
-                },
-              ))
+              if (min(numberOfAccountsShown, _account.accounts!.length) > 0)
+                Expanded(
+                    child: ListView.separated(
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 10),
+                  itemCount:
+                      min(numberOfAccountsShown, _account.accounts!.length),
+                  itemBuilder: (context, index) {
+                    return AccountBox(account: _account.accounts![index]);
+                  },
+                ))
+              else
+                const Text(
+                  "No Accounts Added",
+                  textAlign: TextAlign.center,
+                  style: AppTypography.f18w500,
+                )
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
+        onPressed: () async {
+          await showDialog(
             context: context,
             builder: (context) => AlertDialog(
               title: const Text("Add Account"),
@@ -75,14 +87,16 @@ class _AccountAggregatorState extends State<AccountAggregator> {
               ),
               actions: [
                 TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                  onPressed: () async {},
                   child: const Text("Add"),
                 ),
               ],
             ),
           );
+          setState(() {
+            numberOfAccountsShown++;
+          });
+          log("gdsg");
         },
         child: const Icon(Icons.add),
       ),
