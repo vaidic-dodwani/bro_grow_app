@@ -11,9 +11,17 @@ class WebMap extends StatefulWidget {
 class _WebMapState extends State<WebMap> {
   late WebViewController controller;
 
-  void _hidePanel() {
-    controller.runJavaScript(
-        "document.getElementsByClassName(\"exploreComponents__container\")[0].style.display='none'");
+  void _hidePanel() async {
+    try {
+      await controller.runJavaScript(
+          "document.getElementsByClassName(\"exploreComponents__container\")[0].style.display='none'");
+      await controller.runJavaScript(
+          "document.getElementsByClassName(\"exploreComponents__map\")[0].style.height='100vh'");
+      await controller.runJavaScript(
+          "document.getElementsByClassName(\"right-pane\")[0].style.display='none'");
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
